@@ -1136,53 +1136,6 @@ body.profile-page {
   text-align: center;
   font-size: 1.2em;
 }
-/* TESDA Achievement Chart Styles */
-.legend {
-  font-size: 0.9rem;
-  color: #fff;
-  margin-bottom: 10px;
-}
-
-.slanted th {
-  height: 180px;
-  vertical-align: bottom;
-  padding: 0 4px;
-  position: relative;
-}
-
-.rotate {
-  transform: rotate(-45deg);
-  transform-origin: bottom left;
-  width: 140px;
-  font-size: 0.8rem;
-  white-space: nowrap;
-  position: absolute;
-  bottom: 5px;
-  left: 5px;
-}
-
-.tesda-table {
-  width: 2400px; /* wide table */
-  border-collapse: collapse;
-  background: rgba(255,255,255,0.1);
-}
-
-.tesda-table th, 
-.tesda-table td {
-  border: 1px solid rgba(255,255,255,0.3);
-  padding: 6px;
-  text-align: center;
-}
-
-.yellow-header { background: #ffec99 !important; color: #333; }
-.blue-header { background: #bde0ff !important; color: #333; }
-.orange-header { background: #ffd6a5 !important; color: #333; }
-.green-header { background: #c7f7b4 !important; color: #333; }
-
-.table-wrapper {
-  overflow-x: auto;
-  padding-bottom: 10px;
-}
 
 /* ===== Teacher Feedback Page ===== */
 .feedback-page {
@@ -1768,4 +1721,5 @@ header nav a:hover {
     border: 1px solid rgba(255,255,255,0.3);
     text-align: center;
 }
+
 
