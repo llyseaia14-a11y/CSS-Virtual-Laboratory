@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSS V-LAB | Monitor Progress</title>
+<link rel="stylesheet" href="styles.css">
+
+<style>
+/* --- TESDA GRID STYLING --- */
+.table-wrapper {
+    overflow-x: auto;
+    margin-top: 25px;
+    border-radius: 10px;
+}
+
+.tesda-table {
+    width: 1800px;
+    border-collapse: collapse;
+    background: white;
+    font-size: 0.85rem;
+}
+
+.tesda-table th, .tesda-table td {
+    border: 1px solid #cfcfcf;
+    padding: 6px;
+    text-align: center;
+}
+
+.tesda-table th {
+    background: #003b7a;
+    color: white;
+    font-weight: bold;
+}
+
+.section-title {
+    margin-top: 50px;
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: white;
+}
+
+/* Shaded groups (like TESDA colored columns) */
+.yellow-header { background: #ffec99 !important; color: #333; }
+.green-header  { background: #c7f7b4 !important; color: #333; }
+.blue-header   { background: #bde0ff !important; color: #333; }
+.orange-header { background: #ffd6a5 !important; color: #333; }
+
+/* Search bar */
+.progress-search input {
+    padding: 10px;
+    width: 250px;
+    border-radius: 8px;
+    border: none;
+}
+.progress-search button {
+    padding: 10px 18px;
+    background: #3a82ff;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    border: none;
+}
+.progress-search button:hover { background: #1b5fff; }
+
+</style>
+
+</head>
+<body class="progress-page">
+
+<!-- ===== Navbar ===== -->
+<nav class="navbar">
+  <div class="nav-container">
+    <div class="nav-left">
+      <img src="assets/logo.png" class="nav-logo">
+      <span class="nav-title">CSS V-LAB</span>
+    </div>
+    <div class="nav-links">
+      <a href="teacher-dashboard.html">Dashboard</a>
+      <a href="teacher-uploads.html">Uploads</a>
+      <a href="teacher-progress.html" class="active">Monitor Progress</a>
+      <a href="teacher-feedback.html">Feedback</a>
+      <a href="teacher-profile.html">Profile</a>
+      <a href="index.html" class="logout-link">Logout</a>
+    </div>
+  </div>
+</nav>
+
+<section class="progress-section">
+<h2>Monitor Student Progress</h2>
+<p>TESDA-aligned progress tracking for all learners.</p>
+
+<!-- Search -->
+<div class="progress-search">
+  <input type="text" id="search" placeholder="Search student name...">
+  <button>Search</button>
+</div>
+
+<!-- =================== TESDA PROGRESS CHART =================== -->
+<h3 class="section-title">Progress Chart</h3>
+
+<iframe 
+    src="teacher-progress-chart.html" 
+    width="100%" 
+    height="600px"
+    style="border: 2px solid #fff; border-radius: 10px;">
+</iframe>
+
+<!-- =================== TESDA ACHIEVEMENT CHART =================== -->
+<h3 class="section-title">Achievement Chart</h3>
+
+<iframe 
+    src="teacher-achievement-chart.html" 
+    width="100%" 
+    height="600px"
+    style="border: 2px solid #fff; border-radius: 10px;">
+</iframe>
+
+</section>
+
+<footer>
+  Copyright © 2025 CSS V-LAB | Developed for Academic Purposes Only
+</footer>
+
+</body>
+</html>

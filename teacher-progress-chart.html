@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>TESDA Progress Chart</title>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        padding: 20px;
+        background: white;
+    }
+
+    h2 {
+        text-align: center;
+        margin-bottom: 20px;
+        font-size: 22px;
+        text-transform: uppercase;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 14px;
+    }
+
+    th, td {
+        border: 1px solid #000;
+        padding: 6px;
+        text-align: center;
+    }
+
+    th {
+        background: #dbe6ff;
+    }
+
+    td[contenteditable="true"] {
+        background: #fffdf5;
+    }
+</style>
+</head>
+
+<body>
+
+<h2>TESDA PROGRESS CHART – COMPUTER SYSTEM SERVICING NC II</h2>
+
+<table>
+    <tr>
+        <th>No.</th>
+        <th>Name of Trainee</th>
+        <th>Assemble & Disassemble PC</th>
+        <th>Install OS</th>
+        <th>Upgrade OS</th>
+        <th>Network Cabling</th>
+        <th>Install Router</th>
+        <th>Setup User Accounts</th>
+        <th>Install Server Role</th>
+        <th>Final Evaluation</th>
+    </tr>
+
+    <!-- 20 Trainee Rows -->
+    <script>
+        for (let i = 1; i <= 20; i++) {
+            document.write(`
+                <tr>
+                    <td>${i}</td>
+                    <td contenteditable="true"></td>
+                    <td contenteditable="true"></td>
+                    <td contenteditable="true"></td>
+                    <td contenteditable="true"></td>
+                    <td contenteditable="true"></td>
+                    <td contenteditable="true"></td>
+                    <td contenteditable="true"></td>
+                    <td contenteditable="true"></td>
+                    <td contenteditable="true"></td>
+                </tr>
+            `);
+        }
+    </script>
+
+</table>
+
+</body>
+</html>

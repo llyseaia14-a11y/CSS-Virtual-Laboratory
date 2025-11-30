@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OHS Quiz | CSS V-LAB</title>
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+        /* ===== GLASS QUIZ CONTAINER ===== */
+        .quiz-wrapper {
+            max-width: 850px;
+            margin: 150px auto;
+            padding: 40px;
+            border-radius: 20px;
+            background: rgba(255,255,255,0.12);
+            box-shadow: 0 0 25px rgba(0, 132, 255, 0.35);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            text-align: center;
+            color: white;
+        }
+
+        /* ===== PROGRESS BAR ===== */
+        .progress-container {
+            width: 80%;
+            margin: 10px auto 30px auto;
+            height: 18px;
+            background: rgba(255,255,255,0.25);
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        #progressBar {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #4de680, #27c13f);
+            transition: width 0.4s ease;
+        }
+
+        /* ===== QUESTION ===== */
+        #question {
+            font-size: 2em;
+            font-weight: 700;
+            margin-bottom: 25px;
+        }
+
+        /* ===== ANSWER OPTIONS ===== */
+        .quiz-option {
+            padding: 18px;
+            margin-top: 15px;
+            background: rgba(255,255,255,0.15);
+            border: 1px solid rgba(255,255,255,0.25);
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 1.2em;
+            transition: 0.25s ease;
+            color: white;
+        }
+
+        .quiz-option:hover {
+            transform: scale(1.03);
+            background: rgba(120,180,255,0.4);
+        }
+
+        .quiz-option.correct {
+            background: #4de680 !important;
+            color: #062b0b !important;
+            box-shadow: 0 0 15px rgba(78, 230, 128, 0.8);
+            transform: scale(1.05);
+        }
+
+        .quiz-option.wrong {
+            background: #ff5d5d !important;
+            color: #3b0000 !important;
+            box-shadow: 0 0 15px rgba(255, 70, 70, 0.8);
+            transform: scale(1.05);
+        }
+
+        /* ===== FEEDBACK TEXT ===== */
+        #feedback {
+            font-size: 1.4em;
+            font-weight: bold;
+            margin-top: 15px;
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* NEXT BUTTON */
+        #nextBtn {
+            display: none;
+            margin-top: 25px;
+            padding: 12px 24px;
+            border-radius: 10px;
+            border: none;
+            background-color: #77b1fd;
+            color: white;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        #nextBtn:hover {
+            background-color: #1571ff;
+        }
+
+        /* SCORE BOX AT THE END */
+        #scoreBox {
+            display: none;
+            margin-top: 20px;
+            font-size: 2rem;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body class="quiz-page">
+    
+ <!-- NAVIGATION BAR -->
+  <header class="navbar">
+    <div class="nav-container">
+      <div class="nav-left">
+        <img src="assets/logo.png" alt="CSS V-LAB Logo" class="nav-logo">
+        <h1 class="nav-title">CSS V-LAB</h1>
+      </div>
+      <nav class="nav-links">
+        <a href="home.html">Home</a>
+        <a href="modules.html" class="active">Modules</a>
+        <a href="simulation.html">Simulations</a>
+        <a href="feedback.html">Feedback</a>
+        <a href="profile.html">Profile</a>
+        <a href="index.html" class="logout-link">Logout</a>
+      </nav>
+    </div>
+  </header>
+<h1 style="text-align:center; margin-top:120px;">OHS Quiz</h1>
+
+<!-- ===== QUIZ AREA ===== -->
+<div class="quiz-wrapper">
+
+    <!-- Progress bar -->
+    <div class="progress-container"><div id="progressBar"></div></div>
+
+    <h2 id="question">Loading...</h2>
+
+    <div id="options"></div>
+
+    <div id="feedback"></div>
+
+    <button id="nextBtn">Next Question</button>
+
+    <div id="scoreBox"></div>
+</div>
+
+<script>
+const quiz = [
+    { q: "What is the first step before opening a computer?", a: ["Wear gloves", "Unplug the power cable", "Touch the RAM", "Shake the case"], c: 1 },
+    { q: "Which PPE prevents static discharge?", a: ["Hard hat", "Safety goggles", "Anti-static wrist strap", "Gloves"], c: 2 },
+    { q: "Why is OHS important?", a: ["Avoid boredom", "Prevent injuries and damage", "To work faster only", "To look professional"], c: 1 },
+    { q: "Which is NOT allowed near electronics?", a: ["Clean table", "Proper lighting", "Liquids", "Anti-static mat"], c: 2 },
+    { q: "Before servicing a CPU, you must:", a: ["Touch exposed wires", "Unplug PC", "Spray water", "Remove monitor"], c: 1 },
+    { q: "Which hazard is common in computer repair?", a: ["Drowning", "Electrical shock", "Falling rocks", "Radiation"], c: 1 },
+    { q: "Proper workspace includes:", a: ["Clutter", "Random wires", "Organized tools", "Food beside PC"], c: 2 },
+    { q: "Static electricity can:", a: ["Heal components", "Destroy components", "Make PC faster", "Fix RAM"], c: 1 },
+    { q: "Before touching internal parts, you must:", a: ["Ground yourself", "Eat snacks", "Wear perfume", "Shake PSU"], c: 0 },
+    { q: "OHS stands for:", a: ["Operational Hardware System", "Occupational Health & Safety", "Office Help Service", "Open Hardware Setup"], c: 1 }
+];
+
+let index = 0;
+let score = 0;
+
+const qText = document.getElementById("question");
+const optionsBox = document.getElementById("options");
+const nextBtn = document.getElementById("nextBtn");
+const progressBar = document.getElementById("progressBar");
+const feedback = document.getElementById("feedback");
+const scoreBox = document.getElementById("scoreBox");
+
+function loadQuestion() {
+    let item = quiz[index];
+
+    qText.innerHTML = item.q;
+    optionsBox.innerHTML = "";
+    nextBtn.style.display = "none";
+    feedback.style.display = "none";
+
+    progressBar.style.width = (index / quiz.length) * 100 + "%";
+
+    item.a.forEach((opt, i) => {
+        let div = document.createElement("div");
+        div.className = "quiz-option";
+        div.innerText = opt;
+        div.onclick = () => selectAnswer(i, div);
+        optionsBox.appendChild(div);
+    });
+}
+
+function selectAnswer(i, div) {
+    let correct = quiz[index].c;
+
+    let all = document.querySelectorAll(".quiz-option");
+    all.forEach(o => o.style.pointerEvents = "none");
+
+    if (i === correct) {
+        div.classList.add("correct");
+        feedback.innerHTML = "🎉 Good job!";
+        feedback.style.color = "#4de680";
+        score++;
+    } else {
+        div.classList.add("wrong");
+        feedback.innerHTML = "❌ Try again next time!";
+        feedback.style.color = "#ff5d5d";
+    }
+
+    feedback.style.display = "block";
+    nextBtn.style.display = "inline-block";
+}
+
+nextBtn.onclick = () => {
+    index++;
+    if (index >= quiz.length) finishQuiz();
+    else loadQuestion();
+};
+
+function finishQuiz() {
+    progressBar.style.width = "100%";
+    qText.innerHTML = "Quiz Completed!";
+    optionsBox.innerHTML = "";
+    nextBtn.style.display = "none";
+
+    feedback.style.display = "none";
+
+    scoreBox.style.display = "block";
+    scoreBox.innerHTML = `Your Score: <b>${score} / ${quiz.length}</b>`;
+}
+
+
+loadQuestion();
+</script>
+
+</body>
+</html>
+ 

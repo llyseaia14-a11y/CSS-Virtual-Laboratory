@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>COC1 — Assembly (Top-Down)</title>
+  <link rel="stylesheet" href="styles-sim.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">CSS V-LAB</div>
+    <h1>COC1 — Assembly (Top-Down)</h1>
+  </header>
+
+  <main class="container">
+    <aside class="parts-col" aria-label="Parts list">
+      <!-- Order matters: which part to place first -->
+      <div class="part-item" draggable="true" data-part="cpu" id="part-cpu">
+        <img src="assets/cpu.png" alt="CPU" />
+        <div class="part-label">CPU</div>
+      </div>
+
+      <div class="part-item" draggable="true" data-part="fan" id="part-fan">
+        <img src="assets/fan.png" alt="Fan" />
+        <div class="part-label">Fan / PSU Fan</div>
+      </div>
+
+      <div class="part-item" draggable="true" data-part="ram" id="part-ram">
+        <img src="assets/ram.png" alt="RAM" />
+        <div class="part-label">RAM</div>
+      </div>
+
+      <div class="part-item" draggable="true" data-part="gpu" id="part-gpu">
+        <img src="assets/gpu.png" alt="GPU" />
+        <div class="part-label">GPU</div>
+      </div>
+
+      <div class="part-item" draggable="true" data-part="ssd" id="part-ssd">
+        <img src="assets/ssd.png" alt="Storage (SSD)" />
+        <div class="part-label">Storage (SSD)</div>
+      </div>
+
+      <div class="part-item" draggable="true" data-part="cables" id="part-cables">
+        <img src="assets/cable.png" alt="Cables" />
+        <div class="part-label">Cables</div>
+      </div>
+
+      <div class="part-item" draggable="true" data-part="psu" id="part-psu">
+        <img src="assets/psu.png" alt="PSU" />
+        <div class="part-label">PSU</div>
+      </div>
+    </aside>
+
+    <section class="board-area">
+      <p class="instruction">Drag each PC part onto the correct motherboard slot.</p>
+
+      <div class="board-card">
+        <div class="board-wrap">
+          <img src="assets/motherboard 1.png" class="motherboard" alt="Motherboard" />
+
+          <!-- Drop zones positioned to match the board image. Tune top/left percentages if you reposition the image -->
+<div class="drop-zone" data-accept="cpu" id="zone-cpu" style="--x:80%; --y:58%"></div>
+<div class="drop-zone" data-accept="fan" id="zone-fan" style="--x:63%; --y:47%"></div>
+<div class="drop-zone" data-accept="ram" id="zone-ram" style="--x:39%; --y:40%"></div>
+<div class="drop-zone" data-accept="gpu" id="zone-gpu" style="--x:36%; --y:73%"></div>
+<div class="drop-zone" data-accept="ssd" id="zone-ssd" style="--x:28%; --y:83%"></div>
+<div class="drop-zone" data-accept="psu" id="zone-psu" style="--x:16%; --y:18%"></div>
+<div class="drop-zone" data-accept="cables" id="zone-cables" style="--x:60%; --y:86%"></div>
+
+
+          <!-- placed items (cloned inside drop zone) -->
+        </div>
+      </div>
+    </section>
+
+    <aside class="progress-col">
+      <div class="progress-card">
+        <h3>Assembly Progress</h3>
+        <div class="progress-bar-wrap">
+          <div class="progress-bar" id="progressFill" style="width:0%"></div>
+        </div>
+        <div class="percent" id="percentText">0%</div>
+
+        <ul class="status-list">
+          <li>CPU <span id="stat-cpu" class="stat pending">Pending</span></li>
+          <li>Fan <span id="stat-fan" class="stat pending">Pending</span></li>
+          <li>RAM <span id="stat-ram" class="stat pending">Pending</span></li>
+          <li>GPU <span id="stat-gpu" class="stat pending">Pending</span></li>
+          <li>Storage <span id="stat-ssd" class="stat pending">Pending</span></li>
+          <li>Cables <span id="stat-cables" class="stat pending">Pending</span></li>
+          <li>PSU <span id="stat-psu" class="stat pending">Pending</span></li>
+        </ul>
+
+        <button id="resetBtn" class="btn">Reset</button>
+      </div>
+    </aside>
+  </main>
+
+  <!-- center popup message -->
+  <div id="popup" class="popup hidden">Good job!</div>
+
+  <script src="SIM.js"></script>
+</body>
+</html>

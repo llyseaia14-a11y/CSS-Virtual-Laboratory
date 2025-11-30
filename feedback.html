@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS V-LAB | Feedback</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="feedback-page">
+
+  <!-- NAVIGATION BAR -->
+  <header class="navbar">
+    <div class="nav-container">
+      <div class="nav-left">
+        <img src="assets/logo.png" alt="CSS V-LAB Logo" class="nav-logo">
+        <h1 class="nav-title">CSS V-LAB</h1>
+      </div>
+      <nav class="nav-links">
+        <a href="home.html">Home</a>
+        <a href="modules.html">Modules</a>
+        <a href="simulation.html">Simulations</a>
+        <a href="feedback.html" class="active">Feedback</a>
+        <a href="profile.html">Profile</a>
+        <a href="index.html" class="logout-link">Logout</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main class="feedback-content">
+  <h2>STUDENT FEEDBACK</h2>
+  <p>We value your thoughts! Choose a feedback type and share your comments below.</p>
+
+  <form class="feedback-form" action="#" method="post">
+
+    <!-- Feedback Type -->
+    <label for="feedback-type">Select Feedback Type:</label>
+    <select id="feedback-type" name="feedback-type" required>
+      <option value="" disabled selected>Choose an option</option>
+      <option value="instructor">For Instructor</option>
+      <option value="system">For System</option>
+    </select>
+
+    <!-- Instructor Name (optional, appears only if instructor feedback selected) -->
+    <div class="instructor-field" id="instructor-field" style="display:none;">
+      <label for="instructor-name">Instructor Name:</label>
+      <input type="text" id="instructor-name" name="instructor-name" placeholder="Enter instructor name">
+    </div>
+
+    <!-- Rating Section -->
+    <div class="rating-group">
+  <label>Rate your experience:</label>
+  <div class="stars">
+    <input type="radio" id="star5" name="rating" value="5"><label for="star5">★</label>
+    <input type="radio" id="star4" name="rating" value="4"><label for="star4">★</label>
+    <input type="radio" id="star3" name="rating" value="3"><label for="star3">★</label>
+    <input type="radio" id="star2" name="rating" value="2"><label for="star2">★</label>
+    <input type="radio" id="star1" name="rating" value="1"><label for="star1">★</label>
+  </div>
+</div>
+
+    <!-- Feedback Text -->
+    <label for="message">Your Feedback:</label>
+    <textarea id="message" name="message" rows="5" placeholder="Write your feedback here..." required></textarea>
+
+    <!-- Submit Button -->
+    <button type="submit" class="btn-submit">Submit Feedback</button>
+
+  </form>
+</main>
+
+<script>
+  // Show instructor field only if "For Instructor" is chosen
+  document.getElementById('feedback-type').addEventListener('change', function() {
+    const instructorField = document.getElementById('instructor-field');
+    instructorField.style.display = this.value === 'instructor' ? 'block' : 'none';
+  });
+</script>
+
+<!-- ===== Logout Confirmation Modal ===== -->
+<div id="logoutModal" class="logout-modal">
+  <div class="logout-modal-content">
+    <h3>Confirm Logout</h3>
+    <p>Are you sure you want to log out?</p>
+    <div class="logout-modal-buttons">
+      <button id="confirmLogout" class="btn-confirm">Yes, Logout</button>
+      <button id="cancelLogout" class="btn-cancel">Cancel</button>
+    </div>
+  </div>
+</div>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const logoutLink = document.querySelector(".logout-link");
+  const modal = document.getElementById("logoutModal");
+  const confirmBtn = document.getElementById("confirmLogout");
+  const cancelBtn = document.getElementById("cancelLogout");
+
+  if (logoutLink) {
+    logoutLink.addEventListener("click", (e) => {
+      e.preventDefault();
+      modal.style.display = "flex";
+    });
+  }
+
+  cancelBtn.addEventListener("click", () => {
+    modal.style.display = "none";
+  });
+
+  confirmBtn.addEventListener("click", () => {
+    window.location.href = "index.html";
+  });
+
+  window.addEventListener("click", (e) => {
+    if (e.target === modal) modal.style.display = "none";
+  });
+});
+</script>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>Copyright © 2025 CSS V-LAB | Developed for Academic Purposes Only</p>
+  </footer>
+
+</body>
+</html>

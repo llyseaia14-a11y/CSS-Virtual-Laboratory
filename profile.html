@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS V-LAB | Profile</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="profile-page">
+
+  <!-- ===== Navbar ===== -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="nav-left">
+        <img src="assets/logo.png" alt="CSS V-LAB Logo" class="nav-logo">
+        <span class="nav-title">CSS V-LAB</span>
+      </div>
+      <div class="nav-links">
+        <a href="home.html">Home</a>
+        <a href="modules.html">Modules</a>
+        <a href="simulation.html">Simulations</a>
+        <a href="feedback.html">Feedback</a>
+        <a href="profile.html" class="active">Profile</a>
+        <a href="index.html" class="logout-link">Logout</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===== Profile Section ===== -->
+  <main class="profile-section">
+    <h2 class="page-title">PROFILE</h2>
+
+    <div class="profile-container">
+
+      <!-- Profile Card -->
+      <div class="profile-card">
+        <img src="assets/prof.png" alt="Profile Photo" class="profile-photo">
+        <h3 class="profile-name">DK</h3>
+        <p class="profile-role">Student | Grade 11</p>
+        <p class="profile-email">dkcutie@gmail.com</p>
+      </div>
+
+      <!-- Personal Info -->
+      <div class="info-box">
+        <h3>Personal Details</h3>
+        <p><strong>Name:</strong> DK</p>
+        <p><strong>Grade Level:</strong> Grade 11</p>
+        <p><strong>Email:</strong> dkcutie@gmail.com</p>
+        <p><strong>Status:</strong> Active</p>
+      </div>
+
+      <!-- Progress Summary -->
+      <div class="progress-box">
+        <h3>Progress Summary</h3>
+
+        <div class="progress-item">
+          <span>Modules Completed (3 / 4)</span>
+          <div class="progress-bar"><div class="fill" style="width:75%;"></div></div>
+        </div>
+
+        <div class="progress-item">
+          <span>Simulations Done (2 / 4)</span>
+          <div class="progress-bar"><div class="fill" style="width:50%;"></div></div>
+        </div>
+
+        <div class="progress-item">
+          <span>Feedback Submitted (4)</span>
+          <div class="progress-bar"><div class="fill" style="width:100%;"></div></div>
+        </div>
+      </div>
+    </div>
+  </main>
+<!-- ===== Logout Confirmation Modal ===== -->
+<div id="logoutModal" class="logout-modal">
+  <div class="logout-modal-content">
+    <h3>Confirm Logout</h3>
+    <p>Are you sure you want to log out?</p>
+    <div class="logout-modal-buttons">
+      <button id="confirmLogout" class="btn-confirm">Yes, Logout</button>
+      <button id="cancelLogout" class="btn-cancel">Cancel</button>
+    </div>
+  </div>
+</div>
+<!-- ===== Logout Confirmation Modal ===== -->
+<div id="logoutModal" class="logout-modal">
+  <div class="logout-modal-content">
+    <h3>Confirm Logout</h3>
+    <p>Are you sure you want to log out?</p>
+    <div class="logout-modal-buttons">
+      <button id="confirmLogout" class="btn-confirm">Yes, Logout</button>
+      <button id="cancelLogout" class="btn-cancel">Cancel</button>
+    </div>
+  </div>
+</div>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const logoutLink = document.querySelector(".logout-link");
+  const modal = document.getElementById("logoutModal");
+  const confirmBtn = document.getElementById("confirmLogout");
+  const cancelBtn = document.getElementById("cancelLogout");
+
+  if (logoutLink) {
+    logoutLink.addEventListener("click", (e) => {
+      e.preventDefault();
+      modal.style.display = "flex";
+    });
+  }
+
+  cancelBtn.addEventListener("click", () => {
+    modal.style.display = "none";
+  });
+
+  confirmBtn.addEventListener("click", () => {
+    window.location.href = "index.html";
+  });
+
+  window.addEventListener("click", (e) => {
+    if (e.target === modal) modal.style.display = "none";
+  });
+});
+</script>
+
+  <!-- ===== Footer ===== -->
+  <footer>
+    Copyright © 2025 CSS V-LAB | Developed for Academic Purposes Only
+  </footer>
+
+</body>
+</html>
